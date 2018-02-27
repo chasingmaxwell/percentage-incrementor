@@ -1,0 +1,62 @@
+{
+  "name": "percentage-incrementor",
+  "version": "1.0.0",
+  "description": "Store the percentage of an incrementing subset against a total.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "yarn build && jest --coverage",
+    "lint": "eslint --ignore-path .gitignore .",
+    "precommit": "yarn lint",
+    "prepush": "yarn test",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "prepare": "yarn build",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "flow": "flow",
+    "build": "flow-remove-types src/ --out-dir lib/ && flow-copy-source src lib"
+  },
+  "author": "Peter Sieg <chasingmaxwell@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@commitlint/cli": "^6.1.2",
+    "@commitlint/config-conventional": "^6.1.2",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-import": "^2.9.0",
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.3.0",
+    "flow-remove-types": "^1.2.3",
+    "husky": "^0.14.3",
+    "jest": "^22.4.2",
+    "semantic-release": "^12.4.1",
+    "semantic-release-conventional-commits": "^2.0.0"
+  },
+  "jest": {
+    "coverageDirectory": "__coverage__",
+    "coverageThreshold": {
+      "global": {
+        "branches": 100,
+        "functions": 100,
+        "lines": 100,
+        "statements": 100
+      }
+    },
+    "testEnvironment": "node"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "release": {
+    "analyzeCommits": "semantic-release-conventional-commits",
+    "verifyConditions": "condition-noop"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/chasingmaxwell/percentage-incrementor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chasingmaxwell/percentage-incrementor/issues"
+  },
+  "homepage": "https://github.com/chasingmaxwell/percentage-incrementor#readme"
+}
